@@ -1,13 +1,22 @@
 import React from 'react';
 import './styles/App.scss';
-import RichEditor from './components/texteditor/RichEditor';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { ConfigureStore } from './store/configureStore';
+import Main from './components/common/Main';
+
+const store = ConfigureStore();
 
 function App() {
-  return (
-    <div className="App">
-      <RichEditor/>
-    </div>
-  );
+	return (
+		<Provider store={store}>
+			<BrowserRouter>
+				<div className="App">
+					<Main />
+				</div>
+			</BrowserRouter>
+		</Provider>
+	);
 }
 
 export default App;
