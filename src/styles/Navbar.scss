@@ -1,0 +1,187 @@
+$bg: #fff;
+$bg-accent: #e4e5ea;
+$text-color: #1e1f24;
+$brightness: 0.8;
+$list-hover: #f2f2f2;
+$body: #f1f2f6;
+$fill: #77787a;
+// $bg: #242526;
+// $bg-accent: #484a4d;
+// $text-color: #dadce1;
+// $brightness: 1.2;
+// $list-hover: #525357;
+// $body: #151616;
+// $fill: #868789;
+$nav-size: 60px;
+$border: 1px solid #474a4d;
+$border-radius: 8px;
+$speed: 350ms;
+// $button-size:
+body {
+	background: $body;
+}
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: $text-color;
+	text-decoration: none;
+}
+
+.navbar {
+	height: $nav-size;
+	background-color: $bg;
+	padding: 0 1rem;
+	// border: $border;
+	-webkit-box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
+	-moz-box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
+	box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
+	.navbar-nav {
+		max-width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: flex-end;
+		.nav-item {
+			width: calc(#{$nav-size} * 0.8);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.icon-button {
+				width: calc(#{$nav-size} * 0.5);
+				height: calc(#{$nav-size} * 0.5);
+				background-color: $bg-accent;
+				border-radius: 50%;
+				padding: 5px;
+				margin: 2px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transition: filter 300ms;
+				&:hover {
+					filter: brightness($brightness);
+				}
+				svg {
+					fill: $text-color;
+					width: 20px;
+					height: 20px;
+				}
+			}
+
+			.dropdown {
+				position: absolute;
+				top: 58px;
+				width: 300px;
+				transform: translateX(-45%);
+				background-color: $bg;
+				// border: $border;
+				-webkit-box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
+				-moz-box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
+				box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
+				border-radius: $border-radius;
+				padding: 1rem;
+				overflow: hidden;
+				transition: height $speed ease;
+				.menu {
+					width: 100%;
+					overflow: visible;
+					.menu-item {
+						cursor: pointer;
+						height: 50px;
+						display: flex;
+						align-items: center;
+						border-radius: $border-radius;
+						transition: background $speed;
+						padding: 0.5rem;
+						&:hover {
+							background-color: $list-hover;
+						}
+						.icon-button {
+							margin-right: 0.5rem;
+						}
+						.icon-right {
+							margin-left: auto;
+							&:hover {
+								filter: none;
+							}
+							svg {
+								fill: $fill;
+								width: 20px;
+								height: 20px;
+							}
+						}
+					}
+					// .menu-item {
+					// 	cursor: pointer;
+					// 	height: 50px;
+					// 	display: flex;
+					// 	justify-content: space-between;
+					// 	align-items: center;
+					// 	border-radius: $border-radius;
+					// 	transition: background $speed;
+					// 	padding: 0.5rem;
+					// 	&:hover {
+					// 		background-color: $list-hover;
+					// 	}
+					// 	.left-wrapper {
+					// 		display: flex;
+					// 		align-items: center;
+					// 		.icon-button {
+					// 			margin-right: 0.5rem;
+					// 		}
+					// 	}
+					// 	.right-wrapper {
+					// 		display: flex;
+					// 		align-items: center;
+					// 		.icon-right {
+					// 			display: flex;
+					// 			align-items: center;
+					// 			justify-content: center;
+					// 			&:hover {
+					// 				filter: none;
+					// 			}
+					// 			svg {
+					// 				fill: $fill;
+					// 				width: 20px;
+					// 				height: 20px;
+					// 			}
+					// 		}
+					// 	}
+					// }
+				}
+			}
+		}
+	}
+}
+
+.menu-primary-enter {
+	position: absolute;
+	transform: translateX(-110%);
+}
+.menu-primary-enter-active {
+	transform: translateX(0%);
+	transition: all $speed ease-out;
+}
+.menu-primary-exit {
+	position: absolute;
+}
+.menu-primary-exit-active {
+	transform: translateX(-110%);
+	transition: all $speed ease-out;
+}
+
+.menu-secondary-enter {
+	transform: translateX(110%);
+}
+.menu-secondary-enter-active {
+	transform: translateX(0);
+	transition: all $speed ease-out;
+}
+// .menu-secondary-exit {
+// }
+.menu-secondary-exit-active {
+	transform: translateX(110%);
+	transition: all $speed ease-out;
+}
