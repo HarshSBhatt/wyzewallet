@@ -41,5 +41,8 @@
 		background-color: $dark-bg !important;
 		box-shadow: none !important;
 	}
+	.menu-item:hover {
+		background-color: $dark-list-hover !important;
+	}
 	//! --------Navbar.scss--------
 }
