@@ -6,6 +6,14 @@
 	transition: all 0.2s ease-in-out;
 }
 
+.SunMoon {
+	div {
+		svg {
+			fill: none !important;
+		}
+	}
+}
+
 //! Dark Mode Setting
 
 .dark-mode {

@@ -7,20 +7,20 @@ import { PlusIcon, BellIcon, MessengerIcon, CaretIcon } from '../../assets/icons
 function Header({ darkMode }) {
 	return (
 		<Navbar>
+			<NavItem darkMode={darkMode} icon={<SunMoon value={darkMode.value} />} />
 			<NavItem icon={<PlusIcon />} />
 			<NavItem icon={<BellIcon />} />
 			<NavItem icon={<MessengerIcon />} />
 			<NavItem icon={<CaretIcon />}>
 				<DropdownMenu />
 			</NavItem>
-			<NavItem icon={<SunMoon {...{ darkMode }} />} />
 		</Navbar>
 	);
 }
-const SunMoon = ({ darkMode }) => {
+const SunMoon = ({ value }) => {
 	return (
-		<div className="SunMoon" onClick={darkMode.toggle}>
-			<div style={{ display: 'flex' }}>{darkMode.value ? <Icon.Sun color={'#ffc107'} /> : <Icon.Moon />}</div>
+		<div className="SunMoon">
+			<div style={{ display: 'flex' }}>{value ? <Icon.Sun color={'#ffc107'} /> : <Icon.Moon />}</div>
 		</div>
 	);
 };
