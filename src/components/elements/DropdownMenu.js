@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ArrowIcon, CogIcon, ChevronIcon, BoltIcon } from '../../assets/icons';
 
@@ -17,20 +17,23 @@ export function DropdownMenu() {
 
 	function DropdownItem(props) {
 		return (
-			<span href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
-				<span className="icon-button">{props.leftIcon}</span>
-				{props.children}
-				<span className="icon-right">{props.rightIcon}</span>
-			</span>
 			// <span className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
-			// 	<span className="left-wrapper">
-			// 		<span className="icon-button">{props.leftIcon}</span>
-			// 		<span>{props.children}</span>
-			// 	</span>
-			// 	<span className="right-wrapper">
-			// 		<span className="icon-right">{props.rightIcon}</span>
-			// 	</span>
+			// 	<span className="icon-button">{props.leftIcon}</span>
+			// 	{props.children}
+			// 	<span className="icon-right">{props.rightIcon}</span>
 			// </span>
+
+			// ! Backup--------------------------Flex---------------------------------
+			<span className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+				<span className="left-wrapper">
+					<span className="icon-button">{props.leftIcon}</span>
+					<span>{props.children}</span>
+				</span>
+				<span className="right-wrapper">
+					<span className="icon-right">{props.rightIcon}</span>
+				</span>
+			</span>
+			// ! Backup--------------------------Flex---------------------------------
 		);
 	}
 	return (

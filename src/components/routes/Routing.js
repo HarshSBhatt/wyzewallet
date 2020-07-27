@@ -9,10 +9,10 @@ const NotFound = () => {
 	return <div>404 Not Found</div>;
 };
 
-function Routing() {
+function Routing({ darkMode }) {
 	return (
 		<Fragment>
-			<Header />
+			<Header {...{ darkMode }} />
 			{/* <Link to="/">Home</Link>
 			<Link to="/search?q=AnyQuery">Search</Link> */}
 
