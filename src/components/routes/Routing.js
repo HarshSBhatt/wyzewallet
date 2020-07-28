@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import SearchPage from '../pages/SearchPage';
 import Main from '../common/Main';
 import Header from '../common/Header';
+import { Login } from '../user/Login';
 
 const NotFound = () => {
 	return <div>404 Not Found</div>;
@@ -19,6 +20,7 @@ function Routing({ darkMode }) {
 			<div className="App">
 				<Switch>
 					<Route exact path="/" component={Main} />
+					<Route exact path="/login" component={Login} />
 					<Route path="/search" component={SearchPage} />
 					<Route component={NotFound} />
 				</Switch>

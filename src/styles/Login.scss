@@ -1,0 +1,18 @@
+.login-wrapper {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	.login-component {
+		// position: absolute;
+		// min-height: 100%;
+		width: 500px;
+		background-color: black;
+		color: white;
+		padding: 5rem;
+		margin: 20px;
+	}
+}

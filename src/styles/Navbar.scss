@@ -31,6 +31,7 @@ a {
 	height: $nav-size;
 	background-color: $bg;
 	padding: 0 1rem;
+	z-index: 9999;
 	// border: $border;
 	-webkit-box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
 	-moz-box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
@@ -74,6 +75,7 @@ a {
 				width: 300px;
 				transform: translateX(-45%);
 				background-color: $bg;
+				z-index: 9999;
 				// border: $border;
 				-webkit-box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
 				-moz-box-shadow: 1px 3px 16px 0px rgba(166, 161, 166, 1);
@@ -82,6 +84,35 @@ a {
 				padding: 1rem;
 				overflow: hidden;
 				transition: height $speed ease;
+				.menu-primary-enter {
+					position: absolute;
+					transform: translateX(-110%);
+				}
+				.menu-primary-enter-active {
+					transform: translateX(0%);
+					transition: all $speed ease;
+				}
+				.menu-primary-exit {
+					position: absolute;
+				}
+				.menu-primary-exit-active {
+					transform: translateX(-110%);
+					transition: all $speed ease;
+				}
+
+				.menu-secondary-enter {
+					transform: translateX(110%);
+				}
+				.menu-secondary-enter-active {
+					transform: translateX(0%);
+					transition: all $speed ease;
+				}
+				// .menu-secondary-exit {
+				// }
+				.menu-secondary-exit-active {
+					transform: translateX(110%);
+					transition: all $speed ease;
+				}
 				.menu {
 					width: 100%;
 					overflow: visible;
@@ -154,38 +185,6 @@ a {
 			}
 		}
 	}
-}
-
-.menu-primary-enter {
-	position: absolute;
-	transform: translateX(-110%);
-}
-.menu-primary-enter-active {
-	transform: translateX(0%);
-	transition: all $speed ease-out;
-}
-.menu-primary-exit {
-	position: absolute;
-}
-.menu-primary-exit-active {
-	transform: translateX(-110%);
-	transition: all $speed ease-out;
-}
-
-.menu-secondary-enter {
-	position: absolute;
-	transform: translateX(110%);
-}
-.menu-secondary-enter-active {
-	transform: translateX(0);
-	transition: all $speed ease-out;
-}
-.menu-secondary-exit {
-	position: absolute;
-}
-.menu-secondary-exit-active {
-	transform: translateX(110%);
-	transition: all $speed ease-out;
 }
 
 // .navbar {

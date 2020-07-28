@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ArrowIcon, CogIcon, ChevronIcon, BoltIcon } from '../../assets/icons';
 
@@ -6,9 +6,9 @@ export function DropdownMenu() {
 	const [ activeMenu, setActiveMenu ] = useState('main');
 	const [ menuHeight, setMenuHeight ] = useState(null);
 	const dropdownRef = useRef(null);
-	// useEffect(() => {
-	// 	setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
-	// }, []);
+	useEffect(() => {
+		setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
+	}, []);
 
 	function calcHeight(el) {
 		const height = el.offsetHeight;
