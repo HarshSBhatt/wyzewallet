@@ -1,4 +1,57 @@
+$primary-text-color: #5264ae;
+
 .login-wrapper {
+	background: rgba(29, 132, 205, 1);
+	background: -moz-linear-gradient(
+		45deg,
+		rgba(29, 132, 205, 1) 10%,
+		rgba(25, 111, 210, 1) 20%,
+		rgba(64, 96, 171, 1) 46%,
+		rgba(75, 92, 160, 1) 53%,
+		rgba(75, 92, 160, 1) 77%
+	);
+	background: -webkit-gradient(
+		left bottom,
+		right top,
+		color-stop(10%, rgba(29, 132, 205, 1)),
+		color-stop(20%, rgba(25, 111, 210, 1)),
+		color-stop(46%, rgba(64, 96, 171, 1)),
+		color-stop(53%, rgba(75, 92, 160, 1)),
+		color-stop(77%, rgba(75, 92, 160, 1))
+	);
+	background: -webkit-linear-gradient(
+		45deg,
+		rgba(29, 132, 205, 1) 10%,
+		rgba(25, 111, 210, 1) 20%,
+		rgba(64, 96, 171, 1) 46%,
+		rgba(75, 92, 160, 1) 53%,
+		rgba(75, 92, 160, 1) 77%
+	);
+	background: -o-linear-gradient(
+		45deg,
+		rgba(29, 132, 205, 1) 10%,
+		rgba(25, 111, 210, 1) 20%,
+		rgba(64, 96, 171, 1) 46%,
+		rgba(75, 92, 160, 1) 53%,
+		rgba(75, 92, 160, 1) 77%
+	);
+	background: -ms-linear-gradient(
+		45deg,
+		rgba(29, 132, 205, 1) 10%,
+		rgba(25, 111, 210, 1) 20%,
+		rgba(64, 96, 171, 1) 46%,
+		rgba(75, 92, 160, 1) 53%,
+		rgba(75, 92, 160, 1) 77%
+	);
+	background: linear-gradient(
+		45deg,
+		rgba(29, 132, 205, 1) 10%,
+		rgba(25, 111, 210, 1) 20%,
+		rgba(64, 96, 171, 1) 46%,
+		rgba(75, 92, 160, 1) 53%,
+		rgba(75, 92, 160, 1) 77%
+	);
+
 	position: absolute;
 	display: flex;
 	flex-direction: column;
@@ -7,12 +60,151 @@
 	justify-content: center;
 	align-items: center;
 	.login-component {
-		// position: absolute;
-		// min-height: 100%;
-		width: 500px;
-		background-color: black;
-		color: white;
-		padding: 5rem;
-		margin: 20px;
+		background-color: #fff;
+		z-index: 1;
+		width: 55vw;
+		margin: 1rem;
+		-webkit-box-shadow: 2px 0px 8px -3px rgba(112, 102, 112, 1);
+		-moz-box-shadow: 2px 0px 8px -3px rgba(112, 102, 112, 1);
+		box-shadow: 2px 0px 8px -3px rgba(112, 102, 112, 1);
+		border-radius: 2rem;
+		.login-container {
+			display: flex;
+			width: 100%;
+			.login-left {
+				width: 65%;
+				img {
+					width: 100%;
+					object-fit: cover;
+				}
+			}
+			.login-right {
+				width: 35%;
+				padding: 2rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				align-items: center;
+				.login-text {
+					font-family: 'Bentham', serif;
+					margin-bottom: 1rem;
+					font-size: 35px;
+					text-transform: uppercase;
+					letter-spacing: 2px;
+				}
+				.login-form {
+					display: flex;
+					flex-direction: column;
+					padding: 0.5rem;
+					width: 100%;
+
+					.floating-form {
+						width: 100%;
+						margin-bottom: 0.5rem;
+						.floating-label {
+							position: relative;
+							&:not(:last-of-type) {
+								margin-bottom: 40px;
+							}
+							.floating-input,
+							.floating-select {
+								font-size: 14px;
+								padding: 4px 0;
+								display: block;
+								width: 100%;
+								height: 30px;
+								background-color: transparent;
+								border: 0;
+								margin-left: 5px;
+								border-bottom: 1px solid #ccc;
+								&:focus {
+									outline: none;
+								}
+								&:focus ~ .bar:before,
+								&:focus ~ .bar:after,
+								&:focus ~ .bar:before,
+								&:focus ~ .bar:after {
+									width: 50%;
+								}
+							}
+							.floating-input:focus ~ label,
+							.floating-input:not(:placeholder-shown) ~ label {
+								top: -18px;
+								font-size: 14px;
+								color: $primary-text-color;
+							}
+							.floating-select:focus ~ label,
+							.floating-select:not([value=""]):valid ~ label {
+								top: -18px;
+								font-size: 14px;
+								color: $primary-text-color;
+							}
+							.floating-input ~ .focus-border {
+								position: absolute;
+								bottom: 0;
+								left: 50%;
+								width: 0;
+								height: 2px;
+								background-color: $primary-text-color;
+								transition: 0.4s;
+							}
+							.floating-input:focus ~ .focus-border,
+							.has-content.floating-input ~ .focus-border {
+								width: 100%;
+								transition: 0.4s;
+								left: 5px;
+							}
+							.floating-textarea {
+								min-height: 30px;
+								max-height: 260px;
+								overflow: hidden;
+								overflow-x: hidden;
+							}
+							label {
+								color: #aaa;
+								font-size: 14px;
+								font-weight: normal;
+								position: absolute;
+								pointer-events: none;
+								left: 5px;
+								top: 5px;
+								z-index: -1;
+								letter-spacing: 0.5px;
+								transition: 0.3s ease all;
+								-moz-transition: 0.3s ease all;
+								-webkit-transition: 0.3s ease all;
+							}
+							.login-button {
+								cursor: pointer;
+								width: 100%;
+								background: $primary-text-color;
+								padding: 1rem;
+								letter-spacing: 1.25px;
+								color: #fff;
+								outline: none;
+								border: none;
+								text-decoration: none;
+								margin-bottom: unset;
+								border-radius: 3px;
+							}
+						}
+					}
+					.login-to-register {
+						text-align: center;
+						.account-text {
+							font-size: 12px;
+							a {
+								color: $primary-text-color;
+								font-weight: bolder;
+								transition: 0.3s ease all;
+								&:hover {
+									text-decoration: underline;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
