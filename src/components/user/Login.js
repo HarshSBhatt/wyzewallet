@@ -3,15 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
-import * as yup from 'yup';
-
-const loginSchema = yup.object().shape({
-	email: yup.string().email().required(),
-	password: yup.string().required()
-});
+import { loginSchema } from '../utils';
 
 const errorText = '#f44336';
-
 export const Login = () => {
 	const { register, handleSubmit, errors } = useForm({
 		resolver: yupResolver(loginSchema)
@@ -39,7 +33,7 @@ export const Login = () => {
 										ref={register}
 										autoComplete="off"
 									/>
-									<label>Email address</label>
+									<label style={errors.email && { color: errorText }}>Email address</label>
 									<span
 										className="focus-border"
 										style={errors.email && { backgroundColor: errorText }}
@@ -56,7 +50,7 @@ export const Login = () => {
 										ref={register}
 										autoComplete="off"
 									/>
-									<label>Password</label>
+									<label style={errors.password && { color: errorText }}>Password</label>
 									<span
 										className="focus-border"
 										style={errors.password && { backgroundColor: errorText }}

@@ -3,7 +3,7 @@
 
 body {
 	margin: 0;
-	font-family: "Poppins", sans-serif;
+	font-family: "Poppins", sans-serif !important;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -14,4 +14,10 @@ code {
 
 .tox-statusbar {
 	display: none !important;
+}
+
+input,
+select,
+option {
+	font-family: "Poppins", sans-serif !important;
 }
