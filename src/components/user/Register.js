@@ -12,7 +12,7 @@ const loginSchema = yup.object().shape({
 
 const errorText = '#f44336';
 
-export const Login = () => {
+export const Register = () => {
 	const { register, handleSubmit, errors } = useForm({
 		resolver: yupResolver(loginSchema)
 	});
@@ -26,7 +26,7 @@ export const Login = () => {
 					</div>
 					<div className="login-right">
 						<div className="login-text">
-							<span>Sign in</span>
+							<span>Register</span>
 						</div>
 						<div className="login-form">
 							<form className="floating-form" onSubmit={handleSubmit(onSubmit)}>
@@ -71,7 +71,7 @@ export const Login = () => {
 							</form>
 							<div className="login-to-register">
 								<span className="account-text">
-									Don't have an account? <Link to="/register">Sign up</Link>
+									Already have an account? <Link to="/login">Sign in</Link>
 								</span>
 							</div>
 						</div>
@@ -86,4 +86,4 @@ const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
