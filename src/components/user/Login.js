@@ -1,16 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
+
 import { loginSchema } from '../utils';
+import { loginUser } from '../../store/actions';
 
 const errorText = '#f44336';
-export const Login = () => {
+
+export const Login = (props) => {
 	const { register, handleSubmit, errors } = useForm({
 		resolver: yupResolver(loginSchema)
 	});
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = (data) => {
+		props.loginUser(data);
+	};
+	if (props.auth.isAuthenticated) {
+		// const route = props.location.state;
+		// const redirectTo = route === undefined ? '/' : route.from.pathname;
+		return <Redirect to="/" />;
+	}
 	return (
 		<div className="login-wrapper">
 			<div className="login-component">
@@ -58,7 +68,11 @@ export const Login = () => {
 								</div>
 								<div className="errors">{errors.password && errors.password.message}</div>
 								<div className="floating-label">
-									<button type="submit" className="login-button">
+									<button
+										type="submit"
+										className={`login-button ${props.auth.isLoading && 'loading-overlay'}`}
+										disabled={props.auth.isLoading}
+									>
 										Sign in
 									</button>
 								</div>
@@ -76,8 +90,12 @@ export const Login = () => {
 	);
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+	auth: state.auth
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+	loginUser: (creds) => dispatch(loginUser(creds))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

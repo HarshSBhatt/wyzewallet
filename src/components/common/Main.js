@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { incrementCounter, decrementCounter } from '../../store/actions';
+import { incrementCounter, decrementCounter, logoutUser } from '../../store/actions';
 
 function Main(props) {
 	return (
@@ -10,6 +10,7 @@ function Main(props) {
 			<p>{props.counter.count}</p>
 			<button onClick={() => props.incrementCounter()}>Increment</button>
 			<button onClick={() => props.decrementCounter()}>Decrement</button>
+			<button onClick={() => props.logoutUser()}>Logout</button>
 		</div>
 	);
 }
@@ -20,7 +21,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	incrementCounter: () => dispatch(incrementCounter()),
-	decrementCounter: () => dispatch(decrementCounter())
+	decrementCounter: () => dispatch(decrementCounter()),
+	logoutUser: () => dispatch(logoutUser())
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

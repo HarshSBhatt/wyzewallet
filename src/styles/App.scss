@@ -1,4 +1,3 @@
-@import './Navbar.scss';
 @import './variables.scss';
 @import './Login.scss';
 
@@ -17,41 +16,41 @@
 
 //! Dark Mode Setting
 
-.dark-mode {
-	background: $dark-body;
+// .dark-mode {
+// 	background: $dark-body;
 
-	span,
-	a,
-	p,
-	h1,
-	h2,
-	h3 {
-		color: $dark-primary-text-color;
-	}
+// 	span,
+// 	a,
+// 	p,
+// 	h1,
+// 	h2,
+// 	h3 {
+// 		color: $dark-primary-text-color;
+// 	}
 
-	//! --------Navbar.scss--------
-	.navbar {
-		background-color: $dark-bg;
-		box-shadow: none !important;
-	}
-	.navbar-nav {
-		background-color: $dark-bg;
-	}
-	.icon-button {
-		background-color: $dark-bg-accent !important;
-		&:hover {
-			filter: brightness($dark-brightness) !important;
-		}
-	}
-	svg {
-		fill: $dark-primary-text-color !important;
-	}
-	.dropdown {
-		background-color: $dark-bg !important;
-		box-shadow: none !important;
-	}
-	.menu-item:hover {
-		background-color: $dark-list-hover !important;
-	}
-	//! --------Navbar.scss--------
-}
+// 	//! --------Navbar.scss--------
+// 	.navbar {
+// 		background-color: $dark-bg;
+// 		box-shadow: none !important;
+// 	}
+// 	.navbar-nav {
+// 		background-color: $dark-bg;
+// 	}
+// 	.icon-button {
+// 		background-color: $dark-bg-accent !important;
+// 		&:hover {
+// 			filter: brightness($dark-brightness) !important;
+// 		}
+// 	}
+// 	svg {
+// 		fill: $dark-primary-text-color !important;
+// 	}
+// 	.dropdown {
+// 		background-color: $dark-bg !important;
+// 		box-shadow: none !important;
+// 	}
+// 	.menu-item:hover {
+// 		background-color: $dark-list-hover !important;
+// 	}
+// 	//! --------Navbar.scss--------
+// }

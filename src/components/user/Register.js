@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
+
 import { MIN_AGE, MAX_AGE, registerSchema } from '../utils';
 
 const errorText = '#f44336';
+const primary_text_color = '#5264ae';
+const blur_text_color = '#ccc';
 
 export const Register = () => {
 	const [ type, setType ] = useState('text');
@@ -14,13 +17,26 @@ export const Register = () => {
 		setType('date');
 	};
 
+	const handleClick = (e) => {
+		const label = document.getElementById('gen-label');
+		if (e.target.value !== '') {
+			label.style.color = primary_text_color;
+			label.style.top = '-15px';
+			label.style.left = '0';
+		} else {
+			label.style.color = blur_text_color;
+			label.style.top = '5px';
+			label.style.left = '5px';
+		}
+	};
+
 	const { register, handleSubmit, errors } = useForm({
 		resolver: yupResolver(registerSchema)
 	});
 	const onSubmit = (data) => console.log(data);
 	return (
 		<div className="login-wrapper">
-			<div className="login-component">
+			<div className="login-component register-component">
 				<div className="login-container">
 					<div className="login-left">
 						<img src={require('../../assets/images/generic-hero.svg')} alt="SVG not found" />
@@ -145,13 +161,21 @@ export const Register = () => {
 								{/* //! Gender */}
 
 								<div className="floating-label">
-									<select className="floating-select" name="gender" ref={register} required>
+									<select
+										className="floating-select"
+										name="gender"
+										onClick={handleClick}
+										ref={register}
+										defaultValue=""
+									>
 										<option value="" />
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
 										<option value="Other">Prefer not to say</option>
 									</select>
-									<label style={errors.gender && { color: errorText }}>Gender</label>
+									<label id="gen-label" style={errors.gender && { color: errorText }}>
+										Gender
+									</label>
 									<span
 										className="focus-border"
 										style={errors.gender && { backgroundColor: errorText }}

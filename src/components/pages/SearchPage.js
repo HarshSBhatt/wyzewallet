@@ -1,11 +1,9 @@
 import React from 'react';
 
-function SearchPage({ match, location }) {
-	console.log(match);
+function SearchPage() {
 	return (
 		<p>
 			<strong>Query Params: </strong>
-			{location.search}
 		</p>
 	);
 }

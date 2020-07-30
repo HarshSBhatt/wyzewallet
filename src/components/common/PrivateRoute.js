@@ -2,21 +2,12 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-//! Call Example
-/*
-<PrivateRoute
-	exact
-	path="/favorites"
-	component={() => <Favorites favorites={this.props.favorites} deleteFavorite={this.props.deleteFavorite} />}
-/>;
-*/
-
-function PrivateRoute({ component: Component, ...rest }) {
+function PrivateRoute({ component: Component, auth, ...rest }) {
 	return (
 		<Route
 			{...rest}
 			render={(props) =>
-				props.auth.isAuthenticated ? (
+				auth.isAuthenticated ? (
 					<Component {...props} />
 				) : (
 					<Redirect
@@ -29,17 +20,7 @@ function PrivateRoute({ component: Component, ...rest }) {
 		/>
 	);
 }
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+	auth: state.auth
+});
 export default connect(mapStateToProps)(PrivateRoute);
-/*
-<Route
-  {...rest}
-  render={(props) => {
-    if (props.auth.isAuthenticated) {
-      return <Redirect to="/login" />;
-    } else {
-      return <Component {...props} />;
-    }
-  }}
-/>
-*/
