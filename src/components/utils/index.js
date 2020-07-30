@@ -36,3 +36,9 @@ export const loginSchema = Yup.object().shape({
 	email: Yup.string().email().required(),
 	password: Yup.string().required()
 });
+
+//! Redirection Path
+
+export const getRedirectionPath = (loc) => {
+	return loc === undefined ? '/' : loc.from.pathname;
+};

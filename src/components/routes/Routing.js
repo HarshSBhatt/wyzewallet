@@ -5,7 +5,7 @@ import PrivateRoute from '../common/PrivateRoute';
 import SearchPage from '../pages/SearchPage';
 import Main from '../common/Main';
 import Login from '../user/Login';
-import { Register } from '../user/Register';
+import Register from '../user/Register';
 
 const NotFound = () => {
 	return <div>404 Not Found</div>;

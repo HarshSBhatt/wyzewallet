@@ -25,16 +25,16 @@ export const loginError = (message) => {
 export const loginUser = (creds) => (dispatch) => {
 	dispatch(requestLogin(creds));
 
-	try {
-		setTimeout(() => {
+	setTimeout(() => {
+		if (creds.password === 'abcd' && creds.email === 'a@a.com') {
 			console.log(creds);
 			localStorage.setItem('token', 'Harsh');
 			localStorage.setItem('creds', JSON.stringify(creds));
 			dispatch(receiveLogin({ token: 'Harsh' }));
-		}, 4000);
-	} catch (error) {
-		dispatch(loginError(error.message));
-	}
+		} else {
+			dispatch(loginError('Invalid Credentials'));
+		}
+	}, 4000);
 };
 
 export const requestLogout = () => {

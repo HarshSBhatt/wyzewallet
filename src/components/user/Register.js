@@ -5,12 +5,13 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
 
 import { MIN_AGE, MAX_AGE, registerSchema } from '../utils';
+import { Input, Button, Date } from '../elements';
 
 const errorText = '#f44336';
 const primary_text_color = '#5264ae';
 const blur_text_color = '#ccc';
 
-export const Register = () => {
+export const Register = (props) => {
 	const [ type, setType ] = useState('text');
 
 	const changeToDate = () => {
@@ -51,110 +52,65 @@ export const Register = () => {
 
 								<div className="sibling-input">
 									<div className="sibling-group">
-										<div className="floating-label">
-											<input
-												type="text"
-												className="floating-input"
-												placeholder=" "
-												name="firstname"
-												ref={register}
-												autoComplete="off"
-											/>
-											<label style={errors.firstname && { color: errorText }}>Firstname</label>
-											<span
-												className="focus-border"
-												style={errors.firstname && { backgroundColor: errorText }}
-											/>
-										</div>
-										<div className="errors reg_err">
-											{errors.firstname && errors.firstname.message}
-										</div>
+										<Input
+											type="text"
+											name="firstname"
+											ref={register}
+											errors={errors.firstname}
+											label="Firstname"
+											errorText={errorText}
+											newClass="reg_err"
+										/>
 									</div>
 									<div className="sibling-group">
-										<div className="floating-label">
-											<input
-												type="text"
-												className="floating-input"
-												placeholder=" "
-												name="lastname"
-												ref={register}
-												autoComplete="off"
-											/>
-											<label style={errors.lastname && { color: errorText }}>Lastname</label>
-											<span
-												className="focus-border"
-												style={errors.lastname && { backgroundColor: errorText }}
-											/>
-										</div>
-										<div className="errors reg_err">
-											{errors.lastname && errors.lastname.message}
-										</div>
+										<Input
+											type="text"
+											name="lastname"
+											ref={register}
+											errors={errors.lastname}
+											label="Lastname"
+											errorText={errorText}
+											newClass="reg_err"
+										/>
 									</div>
 								</div>
 
 								{/* //! Email */}
 
-								<div className="floating-label">
-									<input
-										type="text"
-										className="floating-input"
-										placeholder=" "
-										name="email"
-										ref={register}
-										autoComplete="off"
-									/>
-									<label style={errors.email && { color: errorText }}>Email</label>
-									<span
-										className="focus-border"
-										style={errors.email && { backgroundColor: errorText }}
-									/>
-								</div>
-								<div className="errors reg_err">{errors.email && errors.email.message}</div>
+								<Input
+									type="text"
+									name="email"
+									ref={register}
+									errors={errors.email}
+									label="Email"
+									errorText={errorText}
+									newClass="reg_err"
+								/>
 
 								{/* //! Password & Confirm Password */}
 
 								<div className="sibling-input">
 									<div className="sibling-group">
-										<div className="floating-label">
-											<input
-												type="password"
-												className="floating-input"
-												placeholder=" "
-												name="password"
-												ref={register}
-												autoComplete="off"
-											/>
-											<label style={errors.password && { color: errorText }}>Password</label>
-											<span
-												className="focus-border"
-												style={errors.password && { backgroundColor: errorText }}
-											/>
-										</div>
-										<div className="errors reg_err">
-											{errors.password && errors.password.message}
-										</div>
+										<Input
+											type="password"
+											name="password"
+											ref={register}
+											errors={errors.password}
+											label="Password"
+											errorText={errorText}
+											newClass="reg_err"
+										/>
 									</div>
 									<div className="sibling-group">
-										<div className="floating-label">
-											<input
-												type="password"
-												className="floating-input"
-												placeholder=" "
-												name="passwordConfirmation"
-												ref={register}
-												autoComplete="off"
-											/>
-											<label style={errors.passwordConfirmation && { color: errorText }}>
-												Confirm Password
-											</label>
-											<span
-												className="focus-border"
-												style={errors.passwordConfirmation && { backgroundColor: errorText }}
-											/>
-										</div>
-										<div className="errors reg_err">
-											{errors.passwordConfirmation && errors.passwordConfirmation.message}
-										</div>
+										<Input
+											type="password"
+											name="passwordConfirmation"
+											ref={register}
+											errors={errors.passwordConfirmation}
+											label="Confirm Password"
+											errorText={errorText}
+											newClass="reg_err"
+										/>
 									</div>
 								</div>
 
@@ -185,33 +141,22 @@ export const Register = () => {
 
 								{/* //! Birthdate */}
 
-								<div className="floating-label">
-									<input
-										type={type}
-										className="floating-input"
-										placeholder=" "
-										name="birthdate"
-										ref={register}
-										autoComplete="off"
-										onClick={changeToDate}
-										min={MIN_AGE}
-										max={MAX_AGE}
-									/>
-									<label style={errors.birthdate && { color: errorText }}>Birth Date</label>
-									<span
-										className="focus-border"
-										style={errors.birthdate && { backgroundColor: errorText }}
-									/>
-								</div>
-								<div className="errors reg_err">{errors.birthdate && errors.birthdate.message}</div>
+								<Date
+									type={type}
+									name="birthdate"
+									ref={register}
+									errors={errors.birthdate}
+									label="Birth Date"
+									errorText={errorText}
+									newClass="reg_err"
+									onClick={changeToDate}
+									min={MIN_AGE}
+									max={MAX_AGE}
+								/>
 
 								{/* //! Register */}
 
-								<div className="floating-label">
-									<button type="submit" className="login-button">
-										Register
-									</button>
-								</div>
+								<Button auth={props.auth}>Register</Button>
 							</form>
 							<div className="login-to-register">
 								<span className="account-text">
@@ -226,8 +171,10 @@ export const Register = () => {
 	);
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+	auth: state.auth
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

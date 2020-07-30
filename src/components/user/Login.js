@@ -6,6 +6,8 @@ import { yupResolver } from '@hookform/resolvers';
 
 import { loginSchema } from '../utils';
 import { loginUser } from '../../store/actions';
+import { getRedirectionPath } from '../utils';
+import { Input, Button } from '../elements';
 
 const errorText = '#f44336';
 
@@ -17,9 +19,8 @@ export const Login = (props) => {
 		props.loginUser(data);
 	};
 	if (props.auth.isAuthenticated) {
-		// const route = props.location.state;
-		// const redirectTo = route === undefined ? '/' : route.from.pathname;
-		return <Redirect to="/" />;
+		const redirectPath = getRedirectionPath(props.location.state);
+		return <Redirect to={redirectPath} />;
 	}
 	return (
 		<div className="login-wrapper">
@@ -34,48 +35,24 @@ export const Login = (props) => {
 						</div>
 						<div className="login-form">
 							<form className="floating-form" onSubmit={handleSubmit(onSubmit)}>
-								<div className="floating-label">
-									<input
-										type="text"
-										className="floating-input"
-										placeholder=" "
-										name="email"
-										ref={register}
-										autoComplete="off"
-									/>
-									<label style={errors.email && { color: errorText }}>Email address</label>
-									<span
-										className="focus-border"
-										style={errors.email && { backgroundColor: errorText }}
-									/>
-								</div>
-								<div className="errors">{errors.email && errors.email.message}</div>
+								<Input
+									type="text"
+									name="email"
+									ref={register}
+									errors={errors.email}
+									label="Email address"
+									errorText={errorText}
+								/>
+								<Input
+									type="password"
+									name="password"
+									ref={register}
+									errors={errors.password}
+									label="Password"
+									errorText={errorText}
+								/>
 
-								<div className="floating-label">
-									<input
-										type="password"
-										className="floating-input"
-										placeholder=" "
-										name="password"
-										ref={register}
-										autoComplete="off"
-									/>
-									<label style={errors.password && { color: errorText }}>Password</label>
-									<span
-										className="focus-border"
-										style={errors.password && { backgroundColor: errorText }}
-									/>
-								</div>
-								<div className="errors">{errors.password && errors.password.message}</div>
-								<div className="floating-label">
-									<button
-										type="submit"
-										className={`login-button ${props.auth.isLoading && 'loading-overlay'}`}
-										disabled={props.auth.isLoading}
-									>
-										Sign in
-									</button>
-								</div>
+								<Button auth={props.auth}>Sign in</Button>
 							</form>
 							<div className="login-to-register">
 								<span className="account-text">
