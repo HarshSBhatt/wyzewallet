@@ -9,21 +9,38 @@ import { Input, Button, Date } from '../elements';
 
 const errorText = '#f44336';
 const primary_text_color = '#5264ae';
-const blur_text_color = '#ccc';
+const blur_text_color = '#aaa';
 
 export const Register = (props) => {
 	const [ type, setType ] = useState('text');
+	const [ color, setColor ] = useState(false);
 
 	const changeToDate = () => {
 		setType('date');
 	};
 
-	const handleClick = (e) => {
+	const { register, handleSubmit, errors } = useForm({
+		mode: 'onBlur',
+		resolver: yupResolver(registerSchema)
+	});
+
+	const handleFoucs = (e) => {
+		const label = document.getElementById('gen-label');
+		label.style.color = primary_text_color;
+		label.style.top = '-15px';
+		label.style.left = '0';
+	};
+	const handleBlur = (e) => {
 		const label = document.getElementById('gen-label');
 		if (e.target.value !== '') {
 			label.style.color = primary_text_color;
 			label.style.top = '-15px';
 			label.style.left = '0';
+			setColor(e.target.value !== '');
+		} else if (errors.gender !== undefined) {
+			label.style.color = errorText;
+			label.style.top = '5px';
+			label.style.left = '5px';
 		} else {
 			label.style.color = blur_text_color;
 			label.style.top = '5px';
@@ -31,10 +48,6 @@ export const Register = (props) => {
 		}
 	};
 
-	const { register, handleSubmit, errors } = useForm({
-		mode: 'onBlur',
-		resolver: yupResolver(registerSchema)
-	});
 	const onSubmit = (data) => console.log(data);
 	return (
 		<div className="login-wrapper">
@@ -121,16 +134,22 @@ export const Register = (props) => {
 									<select
 										className="floating-select"
 										name="gender"
-										onClick={handleClick}
+										// onClick={handleClick}
 										ref={register}
 										defaultValue=""
+										onFocus={handleFoucs}
+										onBlurCapture={handleBlur}
 									>
 										<option value="" />
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
 										<option value="Other">Prefer not to say</option>
 									</select>
-									<label id="gen-label" style={errors.gender && { color: errorText }}>
+									<label
+										id="gen-label"
+										className={`${color && 'focused'} `}
+										style={errors.gender && { color: errorText }}
+									>
 										Gender
 									</label>
 									<span
