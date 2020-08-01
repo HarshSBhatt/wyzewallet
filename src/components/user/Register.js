@@ -32,6 +32,7 @@ export const Register = (props) => {
 	};
 
 	const { register, handleSubmit, errors } = useForm({
+		mode: 'onBlur',
 		resolver: yupResolver(registerSchema)
 	});
 	const onSubmit = (data) => console.log(data);
@@ -137,8 +138,11 @@ export const Register = (props) => {
 										style={errors.gender && { backgroundColor: errorText }}
 									/>
 								</div>
-								<div className="errors reg_err">{errors.gender && errors.gender.message}</div>
-
+								{errors.gender ? (
+									<div className="errors reg_err">{errors.gender.message}</div>
+								) : (
+									<div className="blank reg_err">dummy</div>
+								)}
 								{/* //! Birthdate */}
 
 								<Date

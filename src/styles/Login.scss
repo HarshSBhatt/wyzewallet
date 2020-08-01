@@ -8,6 +8,7 @@ $error-text: #f44336;
 }
 
 .floating-label {
+	border-bottom: none;
 	position: relative;
 	.floating-input,
 	.floating-select {
@@ -59,9 +60,7 @@ $error-text: #f44336;
 		-moz-transition: 0.3s ease all;
 		-webkit-transition: 0.3s ease all;
 	}
-	.floating-input:focus ~ span {
-		color: yellow !important;
-	}
+
 	.floating-input:focus ~ label,
 	.floating-input:not(:placeholder-shown) ~ label {
 		top: -15px;
@@ -136,6 +135,17 @@ $error-text: #f44336;
 				width: 15px;
 			}
 		}
+	}
+}
+.password {
+	border-bottom: 1px solid #ccc !important;
+	input[type='password'],
+	input[type='text'] {
+		width: 80% !important;
+		border-bottom: none !important;
+	}
+	.focus-border {
+		bottom: -1px !important;
 	}
 }
 //!--------------------------------COMMON INPUT CSS ENDS----------------------------------------------
@@ -248,10 +258,14 @@ $error-text: #f44336;
 					.floating-form {
 						width: 100%;
 						margin-bottom: 0.5rem;
-						.errors {
+						.blank {
+							visibility: hidden;
+						}
+						.errors,
+						.blank {
 							// margin-left: 5px;
 							font-size: 12px;
-							margin-bottom: 40px;
+							margin-bottom: 25px;
 							color: $error-text;
 						}
 						@extend .floating-label;

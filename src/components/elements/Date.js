@@ -17,7 +17,11 @@ export const Date = forwardRef(({ type, name, errors, label, errorText, newClass
 			<label style={errors && { color: errorText }}>{label}</label>
 			<span className="focus-border" style={errors && { backgroundColor: errorText }} />
 		</div>
-		<div className={`errors ${newClass}`}>{errors && errors.message}</div>
+		{errors ? (
+			<div className={`errors ${newClass}`}>{errors.message}</div>
+		) : (
+			<div className={`blank ${newClass}`}>dummy</div>
+		)}
 	</Fragment>
 ));
 

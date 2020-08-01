@@ -16,25 +16,25 @@ export const MIN_AGE = `${yyyy - 80}-${mm}-${dd}`;
 //! Register Schema
 
 const dob = Yup.date()
-	.required('Required')
-	.max(new Date(), "you can't be born in the future!")
-	.typeError('please enter valid date of birth');
+	.required('Required Field')
+	.max(new Date(), "You can't be born in the future!")
+	.typeError('Please enter valid date of birth');
 
 export const registerSchema = Yup.object().shape({
-	firstname: Yup.string().required('required').max(10).min(3),
-	lastname: Yup.string().required('required').max(10).min(3),
-	email: Yup.string().email().required(),
-	password: Yup.string().required().min(8).max(16),
-	passwordConfirmation: Yup.string().oneOf([ Yup.ref('password'), null ], 'passwords must match'),
-	gender: Yup.string().required('required'),
+	firstname: Yup.string().required('Required Field').max(10, 'At most 10 characters').min(3, 'At least 3 characters'),
+	lastname: Yup.string().required('Required Field').max(10, 'At most 10 characters').min(3, 'At least 3 characters'),
+	email: Yup.string().email().required('Required Field'),
+	password: Yup.string().required('Required Field').min(8, 'At least 8 characters'),
+	passwordConfirmation: Yup.string().oneOf([ Yup.ref('password'), null ], 'Passwords must match'),
+	gender: Yup.string().required('Required Field'),
 	birthdate: dob
 });
 
 //! Login Schema
 
 export const loginSchema = Yup.object().shape({
-	email: Yup.string().email().required(),
-	password: Yup.string().required()
+	email: Yup.string().email().required('Required Field'),
+	password: Yup.string().required('Required Field')
 });
 
 //! Redirection Path
