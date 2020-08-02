@@ -33,12 +33,13 @@ export const registerSchema = Yup.object().shape({
 //! Login Schema
 
 export const loginSchema = Yup.object().shape({
-	email: Yup.string().email().required('Required Field'),
+	username: Yup.string().required('Required Field'),
+	// email: Yup.string().email().required('Required Field'),
 	password: Yup.string().required('Required Field')
 });
 
 //! Redirection Path
 
-export const getRedirectionPath = (loc) => {
-	return loc === undefined ? '/' : loc.from.pathname;
+export const getRedirectionPath = (location) => {
+	return location.state === undefined ? '/' : location.state.from.pathname;
 };

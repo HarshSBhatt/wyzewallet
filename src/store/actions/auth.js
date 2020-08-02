@@ -1,17 +1,26 @@
-import * as ActionTypes from '../actionTypes';
+import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
-export const requestLogin = (creds) => {
+import * as ActionTypes from '../actionTypes';
+import { setAuthHeader } from '../../components/utils/setAuthHeader';
+
+export const setCurrentUser = (decoded) => {
 	return {
-		type: ActionTypes.LOGIN_REQUEST,
-		creds
+		type: ActionTypes.SET_CURRENT_USER,
+		payload: decoded
 	};
 };
 
-export const receiveLogin = (response) => {
-	console.log(response);
+export const requestLogin = () => {
+	return {
+		type: ActionTypes.LOGIN_REQUEST
+	};
+};
+
+export const receiveLogin = (token) => {
 	return {
 		type: ActionTypes.LOGIN_SUCCESS,
-		token: response.token
+		token
 	};
 };
 
@@ -23,18 +32,22 @@ export const loginError = (message) => {
 };
 
 export const loginUser = (creds) => (dispatch) => {
-	dispatch(requestLogin(creds));
+	dispatch(requestLogin());
+	axios
+		.post('/users/login', creds)
+		.then((res) => {
+			const { token } = res.data;
+			const decoded = jwt_decode(token);
 
-	setTimeout(() => {
-		if (creds.password === 'abcd' && creds.email === 'a@a.com') {
-			console.log(creds);
-			localStorage.setItem('token', 'Harsh');
-			localStorage.setItem('creds', JSON.stringify(creds));
-			dispatch(receiveLogin({ token: 'Harsh' }));
-		} else {
-			dispatch(loginError('Invalid Credentials'));
-		}
-	}, 4000);
+			localStorage.setItem('token', token);
+			setAuthHeader(token);
+			dispatch(receiveLogin(token));
+			dispatch(setCurrentUser(decoded));
+		})
+		.catch((error) => {
+			console.log(error);
+			dispatch(loginError(error.message));
+		});
 };
 
 export const requestLogout = () => {
@@ -53,6 +66,5 @@ export const receiveLogout = () => {
 export const logoutUser = () => (dispatch) => {
 	dispatch(requestLogout());
 	localStorage.removeItem('token');
-	localStorage.removeItem('creds');
 	dispatch(receiveLogout());
 };

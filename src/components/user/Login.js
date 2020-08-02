@@ -19,7 +19,7 @@ export const Login = (props) => {
 		props.loginUser(data);
 	};
 	if (props.auth.isAuthenticated) {
-		const redirectPath = getRedirectionPath(props.location.state);
+		const redirectPath = getRedirectionPath(props.location);
 		return <Redirect to={redirectPath} />;
 	}
 	return (
@@ -35,12 +35,20 @@ export const Login = (props) => {
 						</div>
 						<div className="login-form">
 							<form className="floating-form" onSubmit={handleSubmit(onSubmit)}>
-								<Input
+								{/* <Input
 									type="text"
 									name="email"
 									ref={register}
 									errors={errors.email}
 									label="Email address"
+									errorText={errorText}
+								/> */}
+								<Input
+									type="text"
+									name="username"
+									ref={register}
+									errors={errors.username}
+									label="Username"
 									errorText={errorText}
 								/>
 								<Input

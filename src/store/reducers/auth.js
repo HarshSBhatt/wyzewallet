@@ -1,21 +1,20 @@
 import * as ActionTypes from '../actionTypes';
+import isEmpty from '../utils/is-empty';
 
 const initialState = {
 	isLoading: false,
-	isAuthenticated: localStorage.getItem('token') ? true : false,
+	isAuthenticated: false,
 	token: localStorage.getItem('token'),
-	user: localStorage.getItem('creds') ? JSON.parse(localStorage.getItem('creds')) : null,
+	user: {},
 	errMess: null
 };
-
 export const Auth = (state = initialState, action) => {
 	switch (action.type) {
 		case ActionTypes.LOGIN_REQUEST:
 			return {
 				...state,
 				isLoading: true,
-				isAuthenticated: false,
-				user: action.creds
+				isAuthenticated: false
 			};
 		case ActionTypes.LOGIN_SUCCESS:
 			return {
@@ -24,6 +23,12 @@ export const Auth = (state = initialState, action) => {
 				isAuthenticated: true,
 				errMess: '',
 				token: action.token
+			};
+		case ActionTypes.SET_CURRENT_USER:
+			return {
+				...state,
+				isAuthenticated: !isEmpty(action.payload),
+				user: action.payload
 			};
 		case ActionTypes.LOGIN_FAILURE:
 			return {
