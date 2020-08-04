@@ -1,17 +1,17 @@
-@import './variables.scss';
-@import './Login.scss';
+@import "./variables.scss";
+@import "./Login.scss";
 
 .dark-mode,
 .light-mode {
-	transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .SunMoon {
-	div {
-		svg {
-			fill: none !important;
-		}
-	}
+  div {
+    svg {
+      fill: none !important;
+    }
+  }
 }
 
 //! Dark Mode Setting
