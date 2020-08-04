@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import useDarkMode from "use-dark-mode";
 import jwt_decode from "jwt-decode";
 
-import "./styles/App.scss";
+import "./styles/App.less";
 import { ConfigureStore } from "./store/configureStore";
 import Routing from "./components/routes/Routing";
 import { setAuthHeader } from "./components/utils/setAuthHeader";

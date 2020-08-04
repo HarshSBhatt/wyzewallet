@@ -1,6 +1,8 @@
 import React, { Fragment, forwardRef, useState } from "react";
 import { Eye, EyeOff } from "react-feather";
 
+const primary_text_color = "#5264ae";
+
 export const Input = forwardRef(
   ({ type, name, errors, label, errorText, newClass }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -14,7 +16,7 @@ export const Input = forwardRef(
             {showPassword ? (
               <Fragment>
                 <span className="show-password" onClick={handleEyeChange}>
-                  <Eye />
+                  <Eye color={primary_text_color} />
                 </span>
                 <input
                   type="text"
