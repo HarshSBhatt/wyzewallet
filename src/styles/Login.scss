@@ -1,6 +1,6 @@
-@primary-text-color: #5264ae;
-@loading-button-overlay: rgba(82, 100, 174, 0.5);
-@error-text: #f44336;
+$primary-text-color: #5264ae;
+$loading-button-overlay: rgba(82, 100, 174, 0.5);
+$error-text: #f44336;
 
 //!--------------------------------COMMON INPUT CSS STARTS----------------------------------------------
 .reg_err {
@@ -61,21 +61,21 @@
     -webkit-transition: 0.3s ease all;
   }
   .focused {
-    color: @primary-text-color;
+    color: $primary-text-color;
   }
   .floating-input:focus ~ label,
   .floating-input:not(:placeholder-shown) ~ label {
     top: -15px;
     left: 0px;
     font-size: 13px;
-    color: @primary-text-color;
+    color: $primary-text-color;
   }
   // .floating-select:focus ~ label,
   // .floating-select:not([value='']):valid ~ label {
   // 	top: -15px;
   // 	left: 0px;
   // 	font-size: 12px;
-  // 	color: @primary-text-color;
+  // 	color: $primary-text-color;
   // }
   .floating-input ~ .focus-border,
   .floating-select ~ .focus-border {
@@ -85,7 +85,7 @@
     margin-left: -5px;
     width: 0;
     height: 2px;
-    background-color: @primary-text-color;
+    background-color: $primary-text-color;
     transition: 0.4s;
   }
   .floating-input:focus ~ .focus-border,
@@ -113,7 +113,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    background: @primary-text-color;
+    background: $primary-text-color;
     padding: 1rem;
     letter-spacing: 1.25px;
     color: #fff;
@@ -124,7 +124,7 @@
     border-radius: 3px;
     transition: 0.5s ease all;
     &:disabled {
-      background: @loading-button-overlay;
+      background: $loading-button-overlay;
       cursor: not-allowed;
     }
     span {
@@ -268,12 +268,12 @@
               // margin-left: 5px;
               font-size: 12px;
               margin-bottom: 25px;
-              color: @error-text;
+              color: $error-text;
             }
-            @extend .floating-label;
             .sibling-input {
               display: flex;
               // flex-direction: column;
+              @extend .floating-label;
               justify-content: space-between;
               .sibling-group {
                 width: 46.5%;
@@ -286,7 +286,7 @@
             .account-text {
               font-size: 13px;
               a {
-                color: @primary-text-color;
+                color: $primary-text-color;
                 font-weight: bolder;
                 transition: 0.3s ease all;
                 text-decoration: none;
@@ -301,3 +301,4 @@
     }
   }
 }
+
