@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 
 import { MIN_AGE, MAX_AGE, registerSchema } from "../utils";
-import { Input, Button, Date } from "../elements";
+import { InputElement, ButtonElement, DateElement } from "../elements";
 
 const errorText = "#f44336";
 const primary_text_color = "#5264ae";
@@ -69,7 +69,7 @@ export const Register = (props) => {
 
                 <div className="sibling-input">
                   <div className="sibling-group">
-                    <Input
+                    <InputElement
                       type="text"
                       name="firstname"
                       ref={register}
@@ -80,7 +80,7 @@ export const Register = (props) => {
                     />
                   </div>
                   <div className="sibling-group">
-                    <Input
+                    <InputElement
                       type="text"
                       name="lastname"
                       ref={register}
@@ -94,7 +94,7 @@ export const Register = (props) => {
 
                 {/* //! Email */}
 
-                <Input
+                <InputElement
                   type="text"
                   name="email"
                   ref={register}
@@ -108,7 +108,7 @@ export const Register = (props) => {
 
                 <div className="sibling-input">
                   <div className="sibling-group">
-                    <Input
+                    <InputElement
                       type="password"
                       name="password"
                       ref={register}
@@ -119,7 +119,7 @@ export const Register = (props) => {
                     />
                   </div>
                   <div className="sibling-group">
-                    <Input
+                    <InputElement
                       type="password"
                       name="passwordConfirmation"
                       ref={register}
@@ -167,7 +167,7 @@ export const Register = (props) => {
                 )}
                 {/* //! Birthdate */}
 
-                <Date
+                <DateElement
                   type={type}
                   name="birthdate"
                   ref={register}
@@ -182,7 +182,7 @@ export const Register = (props) => {
 
                 {/* //! Register */}
 
-                <Button auth={props.auth}>Register</Button>
+                <ButtonElement auth={props.auth}>Register</ButtonElement>
               </form>
               <div className="login-to-register">
                 <span className="account-text">

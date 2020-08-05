@@ -1,6 +1,6 @@
 import React, { Fragment, forwardRef } from "react";
 
-export const Date = forwardRef(
+export const DateElement = forwardRef(
   (
     { type, name, errors, label, errorText, newClass, onClick, min, max },
     ref

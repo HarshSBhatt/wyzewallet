@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers";
 import { loginSchema } from "../utils";
 import { loginUser } from "../../store/actions";
 import { getRedirectionPath } from "../utils";
-import { Input, Button } from "../elements";
+import { InputElement, ButtonElement } from "../elements";
 
 const errorText = "#f44336";
 
@@ -46,7 +46,7 @@ export const Login = (props) => {
 									label="Email address"
 									errorText={errorText}
 								/> */}
-                <Input
+                <InputElement
                   type="text"
                   name="username"
                   ref={register}
@@ -54,7 +54,7 @@ export const Login = (props) => {
                   label="Username"
                   errorText={errorText}
                 />
-                <Input
+                <InputElement
                   type="password"
                   name="password"
                   ref={register}
@@ -63,7 +63,7 @@ export const Login = (props) => {
                   errorText={errorText}
                 />
 
-                <Button auth={props.auth}>Sign in</Button>
+                <ButtonElement auth={props.auth}>Sign in</ButtonElement>
               </form>
               <div className="login-to-register">
                 <span className="account-text">

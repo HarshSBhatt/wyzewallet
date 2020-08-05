@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Button = (props) => {
+export const ButtonElement = (props) => {
   const { auth } = props;
   return (
     <div className="floating-label">

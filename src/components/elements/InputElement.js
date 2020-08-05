@@ -3,7 +3,7 @@ import { Eye, EyeOff } from "react-feather";
 
 const primary_text_color = "#5264ae";
 
-export const Input = forwardRef(
+export const InputElement = forwardRef(
   ({ type, name, errors, label, errorText, newClass }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
     const handleEyeChange = () => {
